@@ -30,14 +30,4 @@
             </a>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Ensure Telegram WebApp is initialized
-            Telegram.WebApp.ready();
-            const user = Telegram.WebApp.initDataUnsafe.user;
-            if (user) {
-                localStorage.setItem('telegramUser', JSON.stringify(user));
-            }
-        });
-    </script>
 @endsection

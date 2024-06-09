@@ -16,6 +16,29 @@ document.addEventListener("DOMContentLoaded", function() {
     const boostValueDisplay = document.getElementById("boostValue");
     const boostProgress = document.getElementById("boostProgress");
 
+    // Ensure Telegram WebApp is initialized
+    Telegram.WebApp.ready();
+
+    // Get user data
+    const user = Telegram.WebApp.initDataUnsafe.user;
+    if (user) {
+        localStorage.setItem('telegramUser', JSON.stringify(user));
+
+        // Fetch additional user data from the server
+        fetch(`/telegram_user/${user.id}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update points display with scores_all
+                if (data && data.scores_all) {
+                    points = data.scores_all;
+                    pointsDisplay.textContent = points;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
+
     function updateProgressBar() {
         boostProgress.style.width = `${(energy / maxEnergy) * 100}%`;
     }

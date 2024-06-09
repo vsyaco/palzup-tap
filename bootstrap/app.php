@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\TelegramUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         then: function () {
             Route::post('/scores', [ScoreController::class, 'update'])->name('scores.update');
             Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
+            Route::get('/telegram_user/{telegram_id}', [TelegramUserController::class, 'show'])->name('telegram_user.show');
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
