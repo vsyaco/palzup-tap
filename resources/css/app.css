@@ -44,8 +44,8 @@ body {
 
 .tap-effect {
     position: absolute;
-    font-size: 16px;
-    color: #ff0;
+    font-size: 20px;
+    color: #ee009a;
     animation: floatUp 1s forwards;
     pointer-events: none;
 }
