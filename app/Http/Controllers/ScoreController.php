@@ -12,7 +12,7 @@ class ScoreController extends Controller
 
     public function index()
     {
-        $scores = TelegramUser::orderBy('score_all', 'desc')->get();
+        $scores = TelegramUser::orderBy('score_all', 'desc')->limit(10)->get();
 
         return view('scores', compact('scores'));
     }
