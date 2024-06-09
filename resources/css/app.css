@@ -28,7 +28,7 @@ body {
     width: 200px; /* Increased size */
     height: 200px; /* Increased size */
     border-radius: 50%; /* Make it round */
-    background-image: url('/public/storage/palzup.jpg'); /* Background image */
+    background-image: url('@/../images/palzup.jpg'); /* Background image */
     background-size: cover; /* Ensure the image covers the container */
     background-position: center; /* Center the image */
     cursor: pointer;
