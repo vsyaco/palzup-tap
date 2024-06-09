@@ -12,12 +12,6 @@ return Application::configure(basePath: dirname(__DIR__))
         channels: __DIR__.'/../routes/channels.php',
         health: '/up',
         then: function () {
-            \Illuminate\Support\Facades\Route::get('/me', function () {
-                return dump(TelegramFacade::getWebAppUser(request()));
-            });
-            \Illuminate\Support\Facades\Route::get('/meall', function () {
-                return dump(request());
-            });
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
