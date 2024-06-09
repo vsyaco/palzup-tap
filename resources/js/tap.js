@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateProgressBar();
 
         // Update tap limit based on energy
-        tapLimit = (energy > 0) ? 6 : 2;
+        tapLimit = (energy > 0) ? 20 : 2;
     }
 
     chainImage.addEventListener("click", function(event) {
