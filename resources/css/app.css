@@ -12,7 +12,6 @@ body {
 
 .game-container {
     text-align: center;
-    background-color: #222;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -26,14 +25,13 @@ body {
 .chain-container {
     position: relative;
     display: inline-block;
-}
-
-#chainImage {
     width: 200px; /* Increased size */
     height: 200px; /* Increased size */
     border-radius: 50%; /* Make it round */
+    background-image: url('/public/storage/palzup.jpg'); /* Background image */
+    background-size: cover; /* Ensure the image covers the container */
+    background-position: center; /* Center the image */
     cursor: pointer;
-    object-fit: cover; /* Ensure the image fits well in the round container */
 }
 
 .boosts {

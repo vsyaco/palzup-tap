@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let energy = 100;
     const maxEnergy = 100;
     const energyDepletionRate = maxEnergy / 60; // Depletes over 1 minute
-    const tapBoostIncrease = 0.1; // Each tap adds 0.2 seconds worth of energy
+    const tapBoostIncrease = 0.1; // Each tap adds 0.1 seconds worth of energy
     let tapCount = 0;
     let tapLimit = 2; // Default tap limit
     let lastTapTime = 0;
@@ -60,10 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Position the effect at the click position
             const rect = chainImage.getBoundingClientRect();
-            tapEffect.style.left = `${event.clientX - rect.left}px`;
-            tapEffect.style.top = `${event.clientY - rect.top}px`;
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            tapEffect.style.left = `${x}px`;
+            tapEffect.style.top = `${y}px`;
 
-            chainImage.parentElement.appendChild(tapEffect);
+            chainImage.appendChild(tapEffect);
 
             setTimeout(() => {
                 tapEffect.remove();
