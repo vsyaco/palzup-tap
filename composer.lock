@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d08bc5d822e1fb26b8fdbc8e3691300f",
+    "content-hash": "246d0fa1ba89fb1a5dc1da102b66dbb7",
     "packages": [
         {
             "name": "brick/math",
@@ -2059,6 +2059,74 @@
                 }
             ],
             "time": "2024-01-28T23:22:08+00:00"
+        },
+        {
+            "name": "micromagicman/laravel-telegram-webapp",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micromagicman/laravel-telegram-webapp.git",
+                "reference": "9454396cf82e305097dc1ab552ee124cac47baf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micromagicman/laravel-telegram-webapp/zipball/9454396cf82e305097dc1ab552ee124cac47baf7",
+                "reference": "9454396cf82e305097dc1ab552ee124cac47baf7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^11.0",
+                "illuminate/support": "^11.0",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "ext-dom": "*",
+                "nunomaduro/collision": "^8.0",
+                "orchestra/testbench": "^9.0.0",
+                "phpunit/php-code-coverage": "^11.0.0",
+                "phpunit/phpunit": "11.0.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Micromagicman\\TelegramWebApp\\TelegramWebAppServiceProvider"
+                    ],
+                    "aliases": {
+                        "TelegramWebApp": "Micromagicman\\TelegramWebApp\\Facade\\TelegramFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Micromagicman\\TelegramWebApp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "micromagicman",
+                    "email": "evgen@micromagicman.ru"
+                }
+            ],
+            "description": "Laravel middleware for Telegram WebApp data validation",
+            "keywords": [
+                "bot",
+                "laravel",
+                "miniapp",
+                "telegram"
+            ],
+            "support": {
+                "issues": "https://github.com/micromagicman/laravel-telegram-webapp/issues",
+                "source": "https://github.com/micromagicman/laravel-telegram-webapp/tree/v2.1.0"
+            },
+            "time": "2024-05-26T16:00:23+00:00"
         },
         {
             "name": "monolog/monolog",
