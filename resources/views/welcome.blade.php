@@ -34,16 +34,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             // Ensure Telegram WebApp is initialized
             Telegram.WebApp.ready();
-
-            //const user = Telegram.WebApp.initDataUnsafe.user;
-            const user = {
-                id: 1,
-                first_name: 'John Doe',
-                last_name: 'Doe',
-                language_code: 'RU',
-                username: 'johndoe',
-            };
-
+            const user = Telegram.WebApp.initDataUnsafe.user;
             if (user) {
                 localStorage.setItem('telegramUser', JSON.stringify(user));
             }
