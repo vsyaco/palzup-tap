@@ -29,9 +29,11 @@ body {
 }
 
 #chainImage {
-    width: 100px;
-    height: auto;
+    width: 200px; /* Increased size */
+    height: 200px; /* Increased size */
+    border-radius: 50%; /* Make it round */
     cursor: pointer;
+    object-fit: cover; /* Ensure the image fits well in the round container */
 }
 
 .boosts {
