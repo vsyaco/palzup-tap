@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 // If no energy, reset boost and update display
                 boost = 1;
-                boostValueDisplay.textContent = `${boost}x`;
+                // boostValueDisplay.textContent = `${boost}x`;
             }
             pointsDisplay.textContent = points;
             updateProgressBar();
