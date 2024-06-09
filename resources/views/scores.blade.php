@@ -14,9 +14,13 @@
         <div class="game-container">
             <h1>Palzup Tap Scores</h1>
             <div class="score-board mt-8">
-                @foreach($scores as $user)
-                    <span>{{ $user->score_all }} - {{ $user->public_name }}</span>
-                @endforeach
+                <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400 text-left">
+                    @foreach($scores as $user)
+                        <li>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ $user->score_all }} - {{ $user->public_name }}</span>
+                        </li>
+                    @endforeach
+                </ol>
             </div>
         </div>
         <div class="text-center">
