@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 // Update points display with scores_all
-                if (data && data.scores_all) {
-                    points = data.scores_all;
+                if (data && data.score_all) {
+                    points = data.score_all;
                     pointsDisplay.textContent = points;
                 }
             })
