@@ -20,6 +20,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'telegram_id',
+        'username',
+        'first_name',
+        'last_name',
+        'language_code',
+        'score_last_update',
+        'score_1h',
+        'score_24h',
+        'score_7d',
+        'score_30d',
+        'score_all',
     ];
 
     /**

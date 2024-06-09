@@ -4,9 +4,10 @@
 
 @section('head')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @csrf
 @endsection
 
-@section('title', 'My title')
+@section('title', 'Palzup Tap')
 
 @section('content')
     <div id="app-content">
@@ -23,27 +24,28 @@
                 <div id="boostProgress" class="progress-bar"></div>
             </div>
         </div>
-        <p id="user-data">Loading user data...</p>
+        <div class="text-center">
+            <a href="{{ route('scores.index') }}" class="inline-block mt-16 mb-4 px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+                Scores
+            </a>
+        </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Ensure Telegram WebApp is initialized
             Telegram.WebApp.ready();
 
-            // Get user data
-            const user = Telegram.WebApp.initDataUnsafe.user;
+            //const user = Telegram.WebApp.initDataUnsafe.user;
+            const user = {
+                id: 1,
+                first_name: 'John Doe',
+                last_name: 'Doe',
+                language_code: 'RU',
+                username: 'johndoe',
+            };
 
             if (user) {
-                const userInfo = `
-                    ID: ${user.id}<br>
-                    First Name: ${user.first_name}<br>
-                    Last Name: ${user.last_name}<br>
-                    Username: ${user.username}<br>
-                    Language Code: ${user.language_code}
-                `;
-                document.getElementById('user-data').innerHTML = userInfo;
-            } else {
-                document.getElementById('user-data').innerHTML = 'User data not available.';
+                localStorage.setItem('telegramUser', JSON.stringify(user));
             }
         });
     </script>

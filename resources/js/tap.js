@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let tapCount = 0;
     let tapLimit = 2; // Default tap limit
     let lastTapTime = 0;
+    let scoreInLast5Seconds = 0;
 
     const pointsDisplay = document.getElementById("points");
     const chainImage = document.getElementById("chainImage");
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (tapCount < tapLimit) {
             points += boost;
+            scoreInLast5Seconds += boost;
             if (energy > 0) {
                 energy += (tapBoostIncrease * (maxEnergy / 60)); // Increase energy by tapBoostIncrease seconds
                 if (energy > maxEnergy) {
@@ -80,4 +82,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initialize the progress bar
     updateProgressBar();
+
+    // Send collected scores every 5 seconds
+    setInterval(function() {
+        if (scoreInLast5Seconds > 0) {
+            const userData = localStorage.getItem('telegramUser');
+            if (userData) {
+                const data = {
+                    score: scoreInLast5Seconds,
+                    user: JSON.parse(userData)
+                };
+
+                fetch('/scores', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Laravel CSRF token
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+                // Reset the score counter
+                scoreInLast5Seconds = 0;
+            }
+        }
+    }, 2000);
 });
