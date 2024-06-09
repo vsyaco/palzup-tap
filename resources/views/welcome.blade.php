@@ -10,7 +10,7 @@
 
 @section('content')
     <div id="app-content">
-        <a href="/me">Me</a>
+        <a href="/me">Me</a> |<a href="/meall">Me</a>
         <div class="game-container">
             <h1>Palzup Tap</h1>
             <div class="score-board">

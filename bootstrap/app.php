@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Support\Facades\Route::get('/me', function () {
                 return dump(TelegramFacade::getWebAppUser(request()));
             });
+            \Illuminate\Support\Facades\Route::get('/meall', function () {
+                return dump(request());
+            });
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
