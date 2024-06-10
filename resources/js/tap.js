@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let energy = 100;
     const maxEnergy = 100;
     const energyDepletionRate = maxEnergy / 60; // Depletes over 1 minute
-    const tapBoostIncrease = 0.1; // Each tap adds 0.1 seconds worth of energy
+    const tapBoostIncrease = 0; // Each tap adds 0.1 seconds worth of energy
     let tapCount = 0;
     let tapLimit = 2; // Default tap limit
+    let tapEnergyLimit = 100; // Default tap limit
     let lastTapTime = 0;
     let scoreInLast5Seconds = 0;
 
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateProgressBar();
 
         // Update tap limit based on energy
-        tapLimit = (energy > 0) ? 6 : 2;
+        tapLimit = (energy > 0) ? tapEnergyLimit : 2;
     }
 
     function handleTap(event) {
@@ -99,9 +100,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 1000);
 
             // Vibrate on tap
-            if (navigator.vibrate) {
-                navigator.vibrate(50); // Vibrate for 50 milliseconds
-            }
+            Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+
 
             tapCount++;
         }
