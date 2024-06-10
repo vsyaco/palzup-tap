@@ -1,10 +1,9 @@
-// script.js
 document.addEventListener("DOMContentLoaded", function() {
     let points = 0;
     let boost = 1;
     let energy = 100;
     const maxEnergy = 100;
-    const energyDepletionRate = maxEnergy / 15; // Depletes over 1 minute
+    const energyDepletionRate = maxEnergy / 60; // Depletes over 1 minute
     const tapBoostIncrease = 0.1; // Each tap adds 0.1 seconds worth of energy
     let tapCount = 0;
     let tapLimit = 2; // Default tap limit
@@ -51,10 +50,12 @@ document.addEventListener("DOMContentLoaded", function() {
         updateProgressBar();
 
         // Update tap limit based on energy
-        tapLimit = (energy > 0) ? 20 : 2;
+        tapLimit = (energy > 0) ? 6 : 2;
     }
 
-    chainImage.addEventListener("click", function(event) {
+    function handleTap(event) {
+        event.preventDefault(); // Prevent default behavior
+
         const now = Date.now();
 
         if (now - lastTapTime >= 1000) {
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (tapCount < tapLimit) {
             points += boost;
             scoreInLast5Seconds += boost;
+
             if (energy > 0) {
                 energy += (tapBoostIncrease * (maxEnergy / 60)); // Increase energy by tapBoostIncrease seconds
                 if (energy > maxEnergy) {
@@ -73,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 // If no energy, reset boost and update display
                 boost = 1;
-                // boostValueDisplay.textContent = `${boost}x`;
+                boostValueDisplay.textContent = `${boost}x`;
             }
             pointsDisplay.textContent = points;
             updateProgressBar();
@@ -83,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function() {
             tapEffect.className = "tap-effect";
             tapEffect.textContent = `+${boost}`;
 
-            // Position the effect at the click position
+            // Position the effect at the touch position
             const rect = chainImage.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
+            const x = event.touches[0].clientX - rect.left;
+            const y = event.touches[0].clientY - rect.top;
             tapEffect.style.left = `${x}px`;
             tapEffect.style.top = `${y}px`;
 
@@ -96,9 +98,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 tapEffect.remove();
             }, 1000);
 
+            // Vibrate on tap
+            if (navigator.vibrate) {
+                navigator.vibrate(50); // Vibrate for 50 milliseconds
+            }
+
             tapCount++;
         }
-    });
+    }
+
+    chainImage.addEventListener("touchstart", handleTap);
 
     // Deplete energy every second
     setInterval(depleteEnergy, 1000);
@@ -116,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     user: JSON.parse(userData)
                 };
 
-                fetch('/scores', {
+                fetch('/score', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -136,5 +145,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 scoreInLast5Seconds = 0;
             }
         }
-    }, 1000);
+    }, 5000);
 });
