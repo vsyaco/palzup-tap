@@ -147,5 +147,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 scoreInLast5Seconds = 0;
             }
         }
-    }, 5000);
+    }, 1000);
 });
