@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let energy = 100;
     const maxEnergy = 100;
     const energyDepletionRate = maxEnergy / 30; // Depletes over 1 minute
-    const tapBoostIncrease = 0.1; // Each tap adds 0.1 seconds worth of energy
+    const tapBoostIncrease = 0.0; // Each tap adds 0.1 seconds worth of energy
     let tapCount = 0;
     let tapLimit = 2; // Default tap limit
     let tapEnergyLimit = 100; // Default tap limit
