@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     user: JSON.parse(userData)
                 };
 
-                fetch('/score', {
+                fetch('/scores', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
